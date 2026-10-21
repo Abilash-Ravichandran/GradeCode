@@ -141,8 +141,6 @@ Press **F5** in VS Code to launch the extension host with debugging enabled. The
 
 ```
 gradecode/
-├── .freebuff/              # Project ID and metadata
-│   └── project-id          # UUID: fcc06f60-91f4-4597-80f8-aff39edfa19b
 ├── src/
 │   ├── extension.ts        # Main entry point: activation, webview, code lens
 │   ├── api.ts              # API integration: OpenAI & Google Gemini

@@ -1,0 +1,195 @@
+/* Define root variables for colors */
+:root {
+  --text-color: var(--vscode-editor-foreground);
+  --chat-background-color: var(--vscode-editor-background);
+  --user-message-background-color: var(--vscode-input-background);
+  --bot-message-background-color: var(--vscode-button-background);
+  --chat-message-border: var(--vscode-editorWidget-border);
+  --inputbox-background-color: var(--vscode-input-background);
+  --inputbox-border-color: var(--vscode-input-border);
+  --inputbox-focus-border-color: var(--vscode-inputValidation-infoBorder);
+}
+
+/* Chat body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--chat-background-color);
+  color: var(--text-color);
+}
+
+/* Chat container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--chat-background-color);
+  padding: 1em;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Message container */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.profile-icon {
+  background-color: rgb(8, 8, 8);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0.3em;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.bot-profile-icon {
+  background-color: var(--bot-message-background-color);
+  background-image: url("../media/bot.svg");
+  margin-right: 10px;
+}
+
+.user-profile-icon {
+  background-color: var(--inputbox-focus-border-color);
+  background-image: url("../media/user.svg");
+  margin-left: 10px;
+}
+
+/* User message */
+.user-message {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Bot message */
+.bot-message {
+  width: fit-content;
+  /* max-width: 60%; */
+  display: flex;
+  flex-direction: row;
+}
+
+/* Message content */
+.message {
+  border-radius: 5px;
+  padding: 5px 10px;
+  word-wrap: break-word;
+}
+
+.user-message .message {
+  width: fit-content;
+  max-width: 40%;
+  background-color: var(--inputbox-focus-border-color);
+  color: white;
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.bot-message .message {
+  width: fit-content;
+  max-width: 100%;
+  background-color: var(--bot-message-background-color);
+  color: var(--text-color);
+}
+
+/* message */
+#messages {
+  flex-grow: 1;
+}
+
+/* Input container */
+.input-container {
+  position: relative;
+  border-radius: 4px;
+  max-width: 98%;
+  padding: 8px;
+  background-color: var(--inputbox-background-color);
+}
+
+#uploadButton {
+  border: none;
+  background-color: transparent;
+}
+
+/* Input field */
+#inputBox {
+  position: relative;
+  background-color: transparent;
+  color: var(--text-color);
+  width: calc(100% - 50px);
+  border: 1px solid var(--inputbox-border-color);
+  margin-right: 0.1em;
+  resize: none;
+  transition: border 0.3s ease;
+}
+
+/* Send button */
+#sendButton {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+}
+
+/* Input box focus */
+#inputBox:focus {
+  outline: none;
+  border: 1px solid var(--inputbox-focus-border-color);
+}
+
+/* Send Icon */
+.codicon-send {
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.codicon-add {
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Loading container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1em; /* Adjust height as needed */
+}
+
+/* Loading bubbles */
+.loading-bubble {
+  width: 10px;
+  height: 10px;
+  margin: 3px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  animation: loadingBounce 1.4s infinite ease-in-out both;
+}
+
+.loading-bubble:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-bubble:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loadingBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "name": "gradecode",
+  "displayName": "GradeCode",
+  "description": "A VS Code extension powered by AI to evaluate and grade your project files based on various coding and functional aspects.",
+  "version": "0.0.1",
+  "publisher": "TechConative",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.start",
+    "onLanguage:javascript"
+],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gradeCode-icon",
+          "title": "Grade Code",
+          "icon": "$(check-all)"
+        }
+      ]
+    },
+    "views": {
+      "gradeCode-icon": [
+        {
+          "id": "grade-code",
+          "name": "Chat",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "type": "object",
+        "title": "General Settings",
+        "properties": {
+          "gradecode.llmModel": {
+            "title": "General",
+            "type": "string",
+            "enum": [
+              "gpt-3.5-turbo-0125",
+              "gpt-4o",
+              "gpt-3.5-turbo",
+              "gemini-1.5-flash"
+            ],
+            "description": "Choose the LLM model you need to use"
+          },
+          "gradecode.apiKey": {
+            "title": "General",
+            "type": "string",
+            "default": "<your_open_ai_api_key>",
+            "description": "Enter your api key here"
+          }
+        }
+      },
+      {
+        "type": "object",
+        "title": "Requirements",
+        "properties": {
+          "gradecode.requirements.functionalCompletion": {
+            "type": "number",
+            "default": 50,
+            "description": "Functional requirement completion"
+          },
+          "gradecode.requirements.nonFunctionalAspects": {
+            "type": "number",
+            "default": 5,
+            "description": "Non Functional aspects"
+          }
+        }
+      },
+      {
+        "type": "object",
+        "title": "Coding aspects",
+        "properties": {
+          "gradecode.codingAspects.namingConvention": {
+            "type": "number",
+            "default": 5,
+            "description": "Naming Convention"
+          },
+          "gradecode.codingAspects.designPatterns": {
+            "type": "number",
+            "default": 5,
+            "description": "Usage of Design Patterns"
+          },
+          "gradecode.codingAspects.bestPractices": {
+            "type": "number",
+            "default": 5,
+            "description": "Programming Best Practices"
+          },
+          "gradecode.codingAspects.errorHandling": {
+            "type": "number",
+            "default": 5,
+            "description": "Error Handling"
+          },
+          "gradecode.codingAspects.languageConstructs": {
+            "type": "number",
+            "default": 5,
+            "description": "Leveraging language constructs"
+          },
+          "gradecode.codingAspects.codeComments": {
+            "type": "number",
+            "default": 2,
+            "description": "Code comments"
+          },
+          "gradecode.codingAspects.deadCode": {
+            "type": "number",
+            "default": 3,
+            "description": "No dead code or unnecessary code and unnecessary dependencies"
+          }
+        }
+      },
+      {
+        "type": "object",
+        "title": "Unit Test Cases",
+        "properties": {
+          "gradecode.unitTestCases.positiveTests": {
+            "type": "number",
+            "default": 4,
+            "description": "Positive Unit Test Cases"
+          },
+          "gradecode.unitTestCases.negativeTests": {
+            "type": "number",
+            "default": 3,
+            "description": "Negative Unit Test Cases"
+          },
+          "gradecode.unitTestCases.coverage": {
+            "type": "number",
+            "default": 3,
+            "description": "Coverage"
+          }
+        }
+      },
+      {
+        "type": "object",
+        "title": "Others",
+        "properties": {
+          "gradecode.others.readme": {
+            "type": "number",
+            "default": 5,
+            "description": "ReadME"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.13.0",
+    "@types/pdf-parse": "^1.1.4",
+    "@vscode/codicons": "^0.0.36",
+    "axios": "^1.7.2",
+    "highlight.js": "^11.9.0",
+    "marked": "^13.0.0",
+    "marked-highlight": "^2.1.2",
+    "pdf-parse": "^1.1.1"
+  }
+}

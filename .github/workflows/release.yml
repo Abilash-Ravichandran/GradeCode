@@ -1,0 +1,32 @@
+# name: Github Actions to release Beta Version to Marketplace
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16'
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build the extension
+#         run: npm run compile
+
+#       - name: Package the extension
+#         run: vsce package --pre-release
+
+#       - name: Publish to Visual Studio Marketplace
+#         env:
+#           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+#         run: vsce publish --pre-release -p $VSCE_PAT
